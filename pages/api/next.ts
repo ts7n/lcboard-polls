@@ -6,7 +6,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const authHeader = req?.headers?.authorization;
+  // @ts-ignore
+  const authHeader = req.headers.get('Authorization');
   if (
     !process.env.CRON_SECRET ||
     authHeader !== `Bearer ${process.env.CRON_SECRET}`
