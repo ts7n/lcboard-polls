@@ -96,7 +96,7 @@ export default function Home() {
 
             {lastVote ? <>
               {lastVote === 'b' ? <>
-                <button ref={aRef} disabled={true} className="ripple bg-green-500 text-xl px-9 py-4 rounded-lg">
+                <button ref={bRef} disabled={true} className="ripple bg-green-500 text-xl px-9 py-4 rounded-lg">
                   {data.optionB} ({bVotes})
                 </button>
               </> : <>
