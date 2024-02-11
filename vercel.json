@@ -1,6 +1,6 @@
 {
   "crons": [{
     "path": "/api/next",
-    "schedule": "0 * * * *"
+    "schedule": "30 11,16 * * 1-5"
   }]
 }
