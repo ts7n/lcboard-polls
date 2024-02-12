@@ -81,7 +81,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex justify-center gap-24 bg-black text-white text-center p-12">
+      <div className="flex h-full justify-center gap-24 bg-black text-white text-center p-12">
         <div className="my-auto">
           <h1 className="text-4xl font-bold">What is your favorite Latin lunch?</h1>
           <p className="mt-1 text-lg font-mono text-gray-300">
@@ -132,7 +132,7 @@ export default function Home() {
           </div>}
         </div>
 
-        {!data.winner && <div className="w-48 h-48">
+        {!data.winner && <div className="w-48 h-48 my-auto">
           <Doughnut data={{
             labels: [data.optionA, data.optionB],
             datasets: [{
@@ -154,7 +154,14 @@ export default function Home() {
         </div>}
 
       </div>
-      <iframe className="h-full" src="https://challonge.com/favoritelatinlunchpreview/module" width="100%" frameBorder={0} allowTransparency />
+
+      <div className="absolute left-5 bottom-5">
+        <div className="flex gap-2.5">
+        <img src="./qrcode.png" className="w-8 h-8" />
+        <h3 className="inline-block text-gray-200 font-mono text-md my-auto">See the full bracket!</h3>
+        </div>
+      </div>
+      {/* <iframe className="h-full" src="https://challonge.com/favoritelatinlunchpreview/module" width="100%" frameBorder={0} allowTransparency /> */}
     </>
   )
 }
