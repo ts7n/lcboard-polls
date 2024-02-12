@@ -24,6 +24,26 @@ export default function Home() {
         bRef.current?.click();
       }
     });
+
+    const inputLoop = () => {
+      const gamepads = navigator.getGamepads();
+
+      if (gamepads[0]) {
+        if (gamepads[0].buttons[0].pressed) {
+          aRef.current?.click();
+        } else if (gamepads[0].buttons[1].pressed) {
+          bRef.current?.click();
+        } else if (gamepads[0].axes[0] < -0.5) {
+          aRef.current?.click();
+        } else if (gamepads[0].axes[0] > 0.5) {
+          bRef.current?.click();
+        }
+      }
+
+      requestAnimationFrame(inputLoop);
+    }
+
+    inputLoop();
   }, []);
 
   useEffect(() => {
