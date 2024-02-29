@@ -19,7 +19,7 @@ export default async function handler(
   //   return res.status(200).json({ success: true, result: 'offline' });
   // }
 
-  const current = (await axios.get('https://api.challonge.com/v1/tournaments/favoritelatinlunchpreview/matches.json', {
+  const current = (await axios.get('https://api.challonge.com/v1/tournaments/favoritelatinlunch/matches.json', {
     auth: {
       username: process.env.CHALLONGE_USERNAME!,
       password: process.env.CHALLONGE_API_KEY!
@@ -30,7 +30,7 @@ export default async function handler(
     return res.status(200).json({ success: true, result: 'tie' });
   }
 
-  await axios.put(`https://api.challonge.com/v1/tournaments/favoritelatinlunchpreview/matches/${current.id}.json`, {}, {
+  await axios.put(`https://api.challonge.com/v1/tournaments/favoritelatinlunch/matches/${current.id}.json`, {}, {
     params: {
       'match[scores_csv]': `"${await kv.get('a')}-${await kv.get('b')}"`,
       'match[winner_id]': (await kv.get('a'))! > (await kv.get('b'))! ? current.player1_id : current.player2_id
@@ -41,7 +41,7 @@ export default async function handler(
     }
   });
 
-  const next = (await axios.get('https://api.challonge.com/v1/tournaments/favoritelatinlunchpreview/matches.json', {
+  const next = (await axios.get('https://api.challonge.com/v1/tournaments/favoritelatinlunch/matches.json', {
     auth: {
       username: process.env.CHALLONGE_USERNAME!,
       password: process.env.CHALLONGE_API_KEY!
@@ -49,7 +49,7 @@ export default async function handler(
   })).data.map((m: any) => m.match).sort((a: any, b: any) => a.round - b.round).find((match: any) => match.state === 'open');
 
   if(next) {
-    await axios.post(`https://api.challonge.com/v1/tournaments/favoritelatinlunchpreview/matches/${next.id}/mark_as_underway.json`, {}, {
+    await axios.post(`https://api.challonge.com/v1/tournaments/favoritelatinlunch/matches/${next.id}/mark_as_underway.json`, {}, {
       auth: {
         username: process.env.CHALLONGE_USERNAME!,
         password: process.env.CHALLONGE_API_KEY!

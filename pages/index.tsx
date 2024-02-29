@@ -161,7 +161,7 @@ export default function Home() {
           <h3 className="inline-block text-gray-200 font-mono text-lg my-auto">See full bracket results!</h3>
         </div>
       </div>
-      {/* <iframe className="h-full" src="https://challonge.com/favoritelatinlunchpreview/module" width="100%" frameBorder={0} allowTransparency /> */}
+      {/* <iframe className="h-full" src="https://challonge.com/favoritelatinlunch/module" width="100%" frameBorder={0} allowTransparency /> */}
     </>
   )
 }
